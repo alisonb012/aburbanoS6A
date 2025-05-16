@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="aburbanoS6A.View.VCrud"
+             Title="VCrud">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
+
+            
+            <Grid ColumnSpacing="1" BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Codigo" Grid.Column="0" BackgroundColor="Yellow" Padding="5" FontAttributes="Bold" />
+                <Label Text="Nombre" Grid.Column="1" BackgroundColor="Yellow" Padding="5" FontAttributes="Bold" />
+                <Label Text="Apellido" Grid.Column="2" BackgroundColor="Yellow" Padding="5" FontAttributes="Bold" />
+                <Label Text="Edad" Grid.Column="3" BackgroundColor="Yellow" Padding="5" FontAttributes="Bold" />
+            </Grid>
+
+            
+            <CollectionView x:Name="lvEstudiante" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnSpacing="1" BackgroundColor="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Codigo}" Grid.Column="0" BackgroundColor="White" Padding="5" />
+                            <Label Text="{Binding Nombre}" Grid.Column="1" BackgroundColor="White" Padding="5" />
+                            <Label Text="{Binding Apellido}" Grid.Column="2" BackgroundColor="White" Padding="5" />
+                            <Label Text="{Binding Edad}" Grid.Column="3" BackgroundColor="White" Padding="5" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
