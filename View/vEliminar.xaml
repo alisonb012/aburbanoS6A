@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="aburbanoS6A.View.vEliminar"
+             Title="vEliminar">
+    <VerticalStackLayout
+            Padding="20"
+            Spacing="10" >
+
+
+        <Label 
+            Text="Actualizar / Eliminar Producto"
+            HorizontalOptions="Center"
+            FontSize="20"
+            FontAttributes="Bold" />
+
+        <Entry x:Name="txtId"
+               Placeholder="ID del producto"
+               IsEnabled="False"/>
+
+        <Entry x:Name="txtNombreProducto"
+               Placeholder="Nombre del producto"/>
+
+        <Entry x:Name="txtDescripcionProducto"
+               Placeholder="Descripción del producto"/>
+
+        <Entry x:Name="txtPrecioUnitario"
+               Placeholder="Precio unitario"
+               Keyboard="Numeric"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnActualizar"
+                    Text="Actualizar"
+                    Clicked="btnActualizar_Clicked"
+                    Grid.Column="0"/>
+
+            <Button x:Name="btnEliminar"
+                    Text="Eliminar"
+                    Clicked="btnEliminar_Clicked"
+                    Grid.Column="1"/>
+        </Grid>
+
+
+    </VerticalStackLayout>
+</ContentPage>

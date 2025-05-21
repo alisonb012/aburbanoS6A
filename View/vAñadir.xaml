@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="aburbanoS6A.View.vAñadir"
+             Title="vAñadir">
+    <VerticalStackLayout>
+        <Label 
+            Text="AÑADIR PRODUCTO"
+            FontAttributes="Bold"
+            FontSize="24"
+            HorizontalOptions="Center" />
+
+        <Entry x:Name="txtNombreProducto"
+               Placeholder="Ingrese el nombre del producto"
+               Keyboard="Text" />
+
+        <Entry x:Name="txtDescripcionProducto"
+               Placeholder="Ingrese la descripción del producto"
+               Keyboard="Text" />
+
+        <Entry x:Name="txtPrecioUnitario"
+               Placeholder="Ingrese el precio unitario"
+               Keyboard="Numeric" />
+
+        <Button x:Name="btnAñadir"
+                Text="Añadir Producto"
+                Clicked="btnAñadir_Clicked"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                CornerRadius="8" />
+
+    </VerticalStackLayout>
+</ContentPage>

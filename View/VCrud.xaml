@@ -6,41 +6,60 @@
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="10">
 
-            
-            <Grid ColumnSpacing="1" BackgroundColor="Black">
+
+            <Label 
+            Text="CRUD DE PRODUCTOS"
+            FontAttributes="Bold"
+            FontSize="24"
+            HorizontalOptions="Center" />
+
+            <!-- Encabezado de la tabla -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Codigo" Grid.Column="0" BackgroundColor="Yellow" Padding="5" FontAttributes="Bold" />
-                <Label Text="Nombre" Grid.Column="1" BackgroundColor="Yellow" Padding="5" FontAttributes="Bold" />
-                <Label Text="Apellido" Grid.Column="2" BackgroundColor="Yellow" Padding="5" FontAttributes="Bold" />
-                <Label Text="Edad" Grid.Column="3" BackgroundColor="Yellow" Padding="5" FontAttributes="Bold" />
+                <Label Text="ID" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+                <Label Text="Nombre" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" />
+                <Label Text="Descripción" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" />
+                <Label Text="Precio" Grid.Row="0" Grid.Column="3" FontAttributes="Bold" />
             </Grid>
 
-            
-            <CollectionView x:Name="lvEstudiante" SelectionMode="None">
-                <CollectionView.ItemTemplate>
+            <!-- Lista de productos -->
+            <ListView x:Name="lvProductos" ItemSelected="lvProductos_ItemSelected"  HasUnevenRows="True">
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid ColumnSpacing="1" BackgroundColor="Black">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding Codigo}" Grid.Column="0" BackgroundColor="White" Padding="5" />
-                            <Label Text="{Binding Nombre}" Grid.Column="1" BackgroundColor="White" Padding="5" />
-                            <Label Text="{Binding Apellido}" Grid.Column="2" BackgroundColor="White" Padding="5" />
-                            <Label Text="{Binding Edad}" Grid.Column="3" BackgroundColor="White" Padding="5" />
-                        </Grid>
+                                <Label Text="{Binding Id}" Grid.Column="0" />
+                                <Label Text="{Binding NombreProducto}" Grid.Column="1" />
+                                <Label Text="{Binding DescripcionProducto}" Grid.Column="2" />
+                                <Label Text="{Binding PrecioUnitario}" Grid.Column="3" />
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="btnAñadir"
+                                Text="Añadir producto"
+                                Clicked="btnAñadir_Clicked"/>
 
         </VerticalStackLayout>
     </ScrollView>

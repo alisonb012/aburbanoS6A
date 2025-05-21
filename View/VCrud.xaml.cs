@@ -7,9 +7,9 @@ namespace aburbanoS6A.View;
 public partial class VCrud : ContentPage
 {
 
-    private const string Url = "http://127.0.0.1/moviles/wsestudiantes.php";
+    private const string Url = "http://localhost:8080/api/products";
     private readonly HttpClient cliente = new HttpClient();
-    private ObservableCollection<Estudiante> _estudiante;
+    private ObservableCollection<Producto> _producto;
 
     public VCrud()
 	{
@@ -21,13 +21,24 @@ public partial class VCrud : ContentPage
         try
         {
             var content = await cliente.GetStringAsync(Url);
-            List<Estudiante> lista = JsonConvert.DeserializeObject<List<Estudiante>>(content);
-            _estudiante = new ObservableCollection<Estudiante>(lista);
-            lvEstudiante.ItemsSource = _estudiante;
+            List<Producto> lista = JsonConvert.DeserializeObject<List<Producto>>(content);
+            _producto = new ObservableCollection<Producto>(lista);
+                lvProductos.ItemsSource = _producto;
         }
         catch (Exception ex)
         {
             await DisplayAlert("Error", ex.Message, "OK");
         }
+    }
+
+    private void btnAñadir_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new vAñadir());
+    }
+
+    private void lvProductos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        /*var objProducto = (Producto)e.SelectedItem;
+        Navigation.PushAsync(new vEliminar(object));*/
     }
 }
