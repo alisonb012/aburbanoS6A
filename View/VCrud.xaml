@@ -4,62 +4,96 @@
              x:Class="aburbanoS6A.View.VCrud"
              Title="VCrud">
     <ScrollView>
-        <VerticalStackLayout Padding="10" Spacing="10">
+        <VerticalStackLayout Padding="20" Spacing="20">
 
 
-            <Label 
-            Text="CRUD DE PRODUCTOS"
-            FontAttributes="Bold"
-            FontSize="24"
-            HorizontalOptions="Center" />
+            <Label Text="CRUD DE PRODUCTOS"
+               FontAttributes="Bold"
+               FontSize="28"
+               HorizontalOptions="Center"
+               TextColor="#333" />
 
-            <!-- Encabezado de la tabla -->
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+          
+            <Grid Padding="10" BackgroundColor="#E0E0E0" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="80" />
                 </Grid.ColumnDefinitions>
 
-                <Label Text="ID" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
-                <Label Text="Nombre" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" />
-                <Label Text="Descripción" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" />
-                <Label Text="Precio" Grid.Row="0" Grid.Column="3" FontAttributes="Bold" />
+                <Label Text="ID" Grid.Column="0" FontAttributes="Bold" TextColor="#555" HorizontalOptions="Center" />
+                <Label Text="Nombre" Grid.Column="1" FontAttributes="Bold" TextColor="#555" />
+                <Label Text="Descripción" Grid.Column="2" FontAttributes="Bold" TextColor="#555" />
+                <Label Text="Precio" Grid.Column="3" FontAttributes="Bold" TextColor="#555" HorizontalOptions="End" />
             </Grid>
 
-            <!-- Lista de productos -->
-            <ListView x:Name="lvProductos" ItemSelected="lvProductos_ItemSelected"  HasUnevenRows="True">
+            <ListView x:Name="lvProductos"
+                  HasUnevenRows="True"
+                  ItemSelected="lvProductos_ItemSelected"
+                  SeparatorVisibility="None"
+                  BackgroundColor="Transparent">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
+                            <Frame Margin="5,4"
+                               Padding="10"
+                               BackgroundColor="White"
+                               CornerRadius="10"
+                               HasShadow="True">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="80" />
+                                    </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Id}" Grid.Column="0" />
-                                <Label Text="{Binding NombreProducto}" Grid.Column="1" />
-                                <Label Text="{Binding DescripcionProducto}" Grid.Column="2" />
-                                <Label Text="{Binding PrecioUnitario}" Grid.Column="3" />
-                            </Grid>
+                                    <Label Text="{Binding id}"
+                                       Grid.Column="0"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       FontSize="14"
+                                       TextColor="#444" />
+
+                                    <Label Text="{Binding productName}"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       TextColor="#222" />
+
+                                    <Label Text="{Binding productDescription}"
+                                       Grid.Column="2"
+                                       VerticalOptions="Center"
+                                       FontSize="14"
+                                       TextColor="#666"
+                                       LineBreakMode="TailTruncation" />
+
+                                    <Label Text="{Binding uniPrice, StringFormat='{}{0:C}'}"
+                                       Grid.Column="3"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="End"
+                                       FontSize="14"
+                                       TextColor="#228B22"
+                                       FontAttributes="Bold" />
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
             <Button x:Name="btnAñadir"
-                                Text="Añadir producto"
-                                Clicked="btnAñadir_Clicked"/>
+                Text="Añadir producto"
+                BackgroundColor="#007ACC"
+                TextColor="White"
+                CornerRadius="8"
+                HeightRequest="45"
+                FontAttributes="Bold"
+                Clicked="btnAñadir_Clicked"/>
+
 
         </VerticalStackLayout>
     </ScrollView>

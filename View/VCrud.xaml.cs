@@ -9,7 +9,7 @@ public partial class VCrud : ContentPage
 
     private const string Url = "http://localhost:8080/api/products";
     private readonly HttpClient cliente = new HttpClient();
-    private ObservableCollection<Producto> _producto;
+    private ObservableCollection<Producto> productos;
 
     public VCrud()
 	{
@@ -22,8 +22,8 @@ public partial class VCrud : ContentPage
         {
             var content = await cliente.GetStringAsync(Url);
             List<Producto> lista = JsonConvert.DeserializeObject<List<Producto>>(content);
-            _producto = new ObservableCollection<Producto>(lista);
-                lvProductos.ItemsSource = _producto;
+            productos = new ObservableCollection<Producto>(lista); 
+            lvProductos.ItemsSource = productos; 
         }
         catch (Exception ex)
         {
@@ -38,7 +38,9 @@ public partial class VCrud : ContentPage
 
     private void lvProductos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        /*var objProducto = (Producto)e.SelectedItem;
-        Navigation.PushAsync(new vEliminar(object));*/
+        var objProducto = (Producto)e.SelectedItem;
+        Navigation.PushAsync(new vEliminar(objProducto));
     }
+
+    
 }

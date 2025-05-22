@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text;
 
 namespace aburbanoS6A.View;
 
@@ -9,31 +10,34 @@ public partial class vAñadir : ContentPage
         InitializeComponent();
     }
 
-    private async void btnAñadir_Clicked(object sender, EventArgs e)
+    private void btnAñadir_Clicked(object sender, EventArgs e)
     {
+       
         try
         {
-            using (WebClient cliente = new WebClient())
+            WebClient cliente = new WebClient();
+            cliente.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            var producto = new
             {
-                var parametros = new System.Collections.Specialized.NameValueCollection();
+                productName = txtNombreProducto.Text,
+                productDescription = txtDescripcionProducto.Text,
+                uniPrice = txtPrecioUnitario.Text
+            };
 
-                // Aquí cambia los nombres y los textos según tus controles y datos que quieres enviar
-                parametros.Add("nombreProducto", txtNombreProducto.Text);
-                parametros.Add("descripcionProducto", txtDescripcionProducto.Text);
-                parametros.Add("precioUnitario", txtPrecioUnitario.Text);
+            string json = System.Text.Json.JsonSerializer.Serialize(producto);
+            byte[] jsonBytes = Encoding.UTF8.GetBytes(json);
 
-                // URL del servicio para crear producto (poner la URL real)
-                string url = "http://localhost:8080/api/products";
+            byte[] response = cliente.UploadData("http://localhost:8080/api/products", "POST", jsonBytes);
 
-                cliente.UploadValues(url, "POST", parametros);
-            }
+            // Puedes interpretar la respuesta si quieres
+            string respuestaTexto = Encoding.UTF8.GetString(response);
 
-            // Navegar a la pantalla VCrud después de añadir
-            await Navigation.PushAsync(new VCrud());
+            Navigation.PushAsync(new VCrud());
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", ex.Message, "Cerrar");
+            DisplayAlert("Error", ex.Message, "Cerrar");
         }
     }
 }

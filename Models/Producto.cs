@@ -8,12 +8,9 @@ namespace aburbanoS6A.Models
 {
     public class Producto
     {
-        public string Id { get; set; }
-
-        public string NombreProducto { get; set; }
-
-        public string DescripcionProducto { get; set; }
-
-        public double PrecioUnitario { get; set; }
+        public int id { get; set; }
+        public string productName { get; set; }
+        public string productDescription { get; set; }
+        public double uniPrice { get; set; }
     }
 }
